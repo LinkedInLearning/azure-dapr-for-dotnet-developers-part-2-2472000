@@ -10,8 +10,8 @@ spec:
     value: "wisdompetmed"
   - name: storageAccessKey
     secretKeyRef:
-      name: connectionStrings:azurestorage
-      key: connectionStrings:azurestorage
+      name: azurestorage
+      key: azurestorage
   - name: queue
     value: "admittedqueue"
   - name: ttlInSeconds

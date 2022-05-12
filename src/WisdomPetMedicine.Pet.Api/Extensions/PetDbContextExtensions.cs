@@ -9,7 +9,7 @@ public static class PetDbContextExtensions
     {
         services.AddDbContext<PetDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("Pet"));
+            options.UseSqlServer(configuration.GetValue<string>("Pet"));
         });
     }
     public static void EnsurePetDbIsCreated(this IApplicationBuilder app)

@@ -9,7 +9,7 @@ spec:
   metadata:
   - name: connectionString
     secretKeyRef:
-      name: connectionStrings:azureservicebus
-      key: connectionStrings:azureservicebus
+      name: azureservicebus
+      key: azureservicebus
 auth:
   secretStore: wisdomsecretstore

@@ -36,7 +36,7 @@ public class PatientQueryController : ControllerBase
                             FROM PatientsMetadata pm 
                             JOIN Patients p
                             ON pm.Id = p.Id";
-        using var connection = new SqlConnection(configuration.GetConnectionString("Hospital"));
+        using var connection = new SqlConnection(configuration.GetValue<string>("Hospital"));
         var orderDetail = (await connection.QueryAsync(sql)).ToList();
         return Ok(orderDetail);
     }

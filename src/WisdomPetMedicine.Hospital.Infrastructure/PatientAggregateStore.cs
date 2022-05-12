@@ -18,9 +18,9 @@ public class PatientAggregateStore : IPatientAggregateStore
     private readonly Container patientContainer;
     public PatientAggregateStore(IConfiguration configuration)
     {
-        var connectionString = configuration["CosmosDb:ConnectionString"];
-        var databaseId = configuration["CosmosDb:DatabaseId"];
-        var containerId = configuration["CosmosDb:ContainerId"];
+        var connectionString = configuration.GetValue<string>("azurecosmosdb");
+        var databaseId = "WisdomPetMedicine";
+        var containerId = "Patients";
 
         var clientOptions = new CosmosClientOptions()
         {

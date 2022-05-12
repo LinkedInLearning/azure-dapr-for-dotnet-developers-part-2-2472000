@@ -29,7 +29,7 @@ public class PetQueryController : ControllerBase
                             p.DateOfBirth_Value as DateOfBirth,
                             p.Species_Value as Species
                             FROM Pets p";
-        using var connection = new SqlConnection(configuration.GetConnectionString("Pet"));
+        using var connection = new SqlConnection(configuration.GetValue<string>("Pet"));
         var orderDetail = (await connection.QueryAsync(query)).ToList();
         return Ok(orderDetail);
     }

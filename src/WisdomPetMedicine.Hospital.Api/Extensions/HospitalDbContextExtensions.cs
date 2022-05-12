@@ -9,7 +9,7 @@ public static class HospitalDbContextExtensions
     {
         services.AddDbContext<HospitalDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("Hospital"));
+            options.UseSqlServer(configuration.GetValue<string>("Hospital"));
         });
     }
     public static void EnsureHospitalDbIsCreated(this IApplicationBuilder app)

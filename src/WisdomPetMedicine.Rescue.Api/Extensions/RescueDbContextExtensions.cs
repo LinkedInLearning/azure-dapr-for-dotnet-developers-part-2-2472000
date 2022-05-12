@@ -9,7 +9,7 @@ public static class RescueDbContextExtensions
     {
         services.AddDbContext<RescueDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("Rescue"));
+            options.UseSqlServer(configuration.GetValue<string>("Rescue"));
         });
     }
     public static void EnsureRescueDbIsCreated(this IApplicationBuilder app)

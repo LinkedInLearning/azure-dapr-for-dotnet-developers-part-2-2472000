@@ -50,7 +50,7 @@ public class RescueQueryController : ControllerBase
                         FROM RescuedAnimalsMetadata ram
                         JOIN RescuedAnimals ra ON ram.Id = ra.Id
                         LEFT JOIN Adopters a ON ra.AdopterId_Value = a.Id";
-        using var connection = new SqlConnection(configuration.GetConnectionString("Rescue"));
+        using var connection = new SqlConnection(configuration.GetValue<string>("Rescue"));
         var orderDetail = (await connection.QueryAsync(sql)).ToList();
         return Ok(orderDetail);
     }

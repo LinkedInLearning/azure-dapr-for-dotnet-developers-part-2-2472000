@@ -11,8 +11,8 @@ spec:
     value: "wisdompetmed"
   - name: accountKey
     secretKeyRef:
-      name: connectionStrings:azurestorage
-      key: connectionStrings:azurestorage
+      name: azurestorage
+      key: azurestorage
   - name: tableName
     value: "state"
 auth:

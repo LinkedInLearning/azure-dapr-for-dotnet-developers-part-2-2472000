@@ -8,17 +8,23 @@ namespace WisdomPetMedicine.PetAggregator.Api.Controllers;
 public class PetAggregatorController : ControllerBase
 {
     private readonly DaprClient daprClient;
+    private readonly ILogger<PetAggregatorController> logger;
 
-    public PetAggregatorController(DaprClient daprClient)
+    public PetAggregatorController(DaprClient daprClient, ILogger<PetAggregatorController> logger)
     {
         this.daprClient = daprClient;
+        this.logger = logger;
     }
 
     [HttpGet]
     public async Task<IActionResult> Get()
     {
         var lastQuery = await daprClient.GetStateEntryAsync<StateModel>("statestore", "lastquery");
-        if (lastQuery.Value != null && DateTime.UtcNow <= lastQuery.Value.LastQuery.AddSeconds(30))
+        int lastQueryDurationInSeconds = await GetConfiguredLastQueryDurationInSecondsAsync();
+
+        logger.LogInformation($"LastQueryDurationInSeconds is: {lastQueryDurationInSeconds}");
+
+        if (lastQuery.Value != null && DateTime.UtcNow <= lastQuery.Value.LastQuery.AddSeconds(lastQueryDurationInSeconds))
         {
             return Ok(lastQuery.Value.Data);
         }
@@ -35,7 +41,21 @@ public class PetAggregatorController : ControllerBase
 
         return Ok(result);
     }
-    
+
+    private async Task<int> GetConfiguredLastQueryDurationInSecondsAsync()
+    {
+        try
+        {
+            var configuration = await daprClient.GetConfiguration("wisdomconfigstore", new List<string>() { "LastQueryDurationInSeconds" });
+            _ = int.TryParse(configuration.Items[0].Value, out int lastQueryDurationInSeconds);
+            return lastQueryDurationInSeconds;
+        }
+        catch (Exception)
+        {
+            return 30;
+        }
+    }
+
     private async Task<IEnumerable<dynamic>> QueryPets()
     {
         var pets = await daprClient.InvokeMethodAsync<IEnumerable<PetModel>>(HttpMethod.Get, "pet", "petquery");

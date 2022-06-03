@@ -1,1 +1,1 @@
-dapr run --app-id hospital --app-port 5002 --dapr-http-port 50002 --components-path ..\..\components -- dotnet run --urls http://+:5002
+dapr run --app-id hospital --app-port 5002 --dapr-http-port 50002 --config ..\..\config\config.yaml --components-path ..\..\components -- dotnet run --urls http://+:5002

@@ -1,1 +1,1 @@
-dapr run --app-id rescue --app-port 5001 --dapr-http-port 50001 --components-path ..\..\components -- dotnet run --urls http://+:5001
+dapr run --app-id rescue --app-port 5001 --dapr-http-port 50001 --config ..\..\config\config.yaml --components-path ..\..\components -- dotnet run --urls http://+:5001

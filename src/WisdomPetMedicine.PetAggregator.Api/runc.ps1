@@ -1,1 +1,1 @@
-dapr run --app-id petaggregator --app-port 5500 --dapr-http-port 55000 --components-path ..\..\components -- dotnet run --urls http://+:5500
+dapr run --app-id petaggregator --app-port 5500 --dapr-http-port 55000 --config ..\..\config\config.yaml --components-path ..\..\components -- dotnet run --urls http://+:5500

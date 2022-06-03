@@ -1,1 +1,1 @@
-dapr run --app-id rescuequery --app-port 5003 --dapr-http-port 50003 --components-path ..\..\components -- dotnet run --urls http://+:5003
+dapr run --app-id rescuequery --app-port 5003 --dapr-http-port 50003 --config ..\..\config\config.yaml --components-path ..\..\components -- dotnet run --urls http://+:5003

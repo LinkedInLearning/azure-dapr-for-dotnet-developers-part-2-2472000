@@ -6,4 +6,4 @@ spec:
   tracing:
     samplingRate: "1"
     zipkin:
-      endpointAddress: http://localhost:9412/api/v2/spans
+      endpointAddress: "https://trace-api.newrelic.com/trace/v1?Api-Key=a8d372d51317868b0a0cfab0a5d4cd75FFFFNRAL&Data-Format=zipkin&Data-Format-Version=2"

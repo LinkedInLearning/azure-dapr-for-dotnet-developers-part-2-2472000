@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  wisdompetmedicine.pet.api:
+    image: ${DOCKER_REGISTRY-}wisdompetmedicinepetapi
+    build:
+      context: .
+      dockerfile: WisdomPetMedicine.Pet.Api/Dockerfile
+
+  wisdompetmedicine.rescue.api:
+    image: ${DOCKER_REGISTRY-}wisdompetmedicinerescueapi
+    build:
+      context: .
+      dockerfile: WisdomPetMedicine.Rescue.Api/Dockerfile
+
+
+  wisdompetmedicine.hospital.api:
+    image: ${DOCKER_REGISTRY-}wisdompetmedicinehospitalapi
+    build:
+      context: .
+      dockerfile: WisdomPetMedicine.Hospital.Api/Dockerfile
+
+
+  wisdompetmedicine.rescuequery.api:
+    image: ${DOCKER_REGISTRY-}wisdompetmedicinerescuequeryapi
+    build:
+      context: .
+      dockerfile: WisdomPetMedicine.RescueQuery.Api/Dockerfile
+
+
+  wisdompetmedicine.petaggregator.api:
+    image: ${DOCKER_REGISTRY-}wisdompetmedicinepetaggregatorapi
+    build:
+      context: .
+      dockerfile: WisdomPetMedicine.PetAggregator.Api/Dockerfile
+

@@ -4,12 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
+	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+	<UserSecretsId>ba6be67f-907d-4eb2-b34f-e7e4108bafb1</UserSecretsId>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
 	<PackageReference Include="Dapper" Version="2.0.123" />
 	<PackageReference Include="Dapr.AspNetCore" Version="1.7.0" />
 	<PackageReference Include="Dapr.Extensions.Configuration" Version="1.7.0" />
+	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
   </ItemGroup>

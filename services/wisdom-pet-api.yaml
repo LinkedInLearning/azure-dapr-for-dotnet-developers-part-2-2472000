@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pet
-  namespace: wpm
+  namespace: default
   labels:
     app: pet
 spec:

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rescuequery
-  namespace: wpm
+  namespace: default
   labels:
     app: rescuequery
 spec:

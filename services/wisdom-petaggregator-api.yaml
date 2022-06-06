@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: petaggregator
-  namespace: default
+  namespace: wpm
   labels:
     app: petaggregator
 spec:

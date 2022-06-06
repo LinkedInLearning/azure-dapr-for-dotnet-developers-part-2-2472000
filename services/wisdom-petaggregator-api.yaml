@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petaggregator
+  namespace: default
+  labels:
+    app: petaggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petaggregator
+  template:
+    metadata:
+      labels:
+        app: petaggregator
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "petaggregator"
+        dapr.io/app-port: "80"
+        dapr.io/log-level: "info"
+        dapr.io/sidecar-liveness-probe-period-seconds: "10"
+        dapr.io/sidecar-readiness-probe-period-seconds: "10"
+    spec:
+      containers:
+      - name: petaggregator
+        image: rdiazconcha/wisdompetmedicinepetaggregatorapi:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: petaggregator
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: petaggregator

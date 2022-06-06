@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hospital
+  namespace: default
+  labels:
+    app: hospital
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hospital
+  template:
+    metadata:
+      labels:
+        app: hospital
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "hospital"
+        dapr.io/app-port: "80"
+        dapr.io/log-level: "info"
+        dapr.io/sidecar-liveness-probe-period-seconds: "10"
+        dapr.io/sidecar-readiness-probe-period-seconds: "10"
+    spec:
+      containers:
+      - name: hospital
+        image: rdiazconcha/wisdompetmedicinehospitalapi:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hospital
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: hospital

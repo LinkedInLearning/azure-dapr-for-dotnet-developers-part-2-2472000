@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rescue
+  namespace: default
+  labels:
+    app: rescue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rescue
+  template:
+    metadata:
+      labels:
+        app: rescue
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "rescue"
+        dapr.io/app-port: "80"
+        dapr.io/log-level: "info"
+        dapr.io/sidecar-liveness-probe-period-seconds: "10"
+        dapr.io/sidecar-readiness-probe-period-seconds: "10"
+    spec:
+      containers:
+      - name: rescue
+        image: rdiazconcha/wisdompetmedicinerescueapi:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rescue
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: rescue

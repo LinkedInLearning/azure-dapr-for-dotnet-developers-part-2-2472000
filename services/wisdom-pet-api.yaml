@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet
+  namespace: default
+  labels:
+    app: pet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pet
+  template:
+    metadata:
+      labels:
+        app: pet
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "pet"
+        dapr.io/app-port: "80"
+        dapr.io/log-level: "info"
+        dapr.io/sidecar-liveness-probe-period-seconds: "10"
+        dapr.io/sidecar-readiness-probe-period-seconds: "10"
+    spec:
+      containers:
+      - name: pet
+        image: rdiazconcha/wisdompetmedicinepetapi:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pet
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: pet

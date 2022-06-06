@@ -4,6 +4,7 @@ metadata:
   name: wisdomconfigstore
 spec:
   type: configuration.redis
+  version: v1
   metadata:
   - name: redisHost
     value: localhost:6379

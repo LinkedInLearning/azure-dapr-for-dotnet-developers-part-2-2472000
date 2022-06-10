@@ -1,19 +1,12 @@
-apiVersion: dapr.io/v1alpha1
-kind: Component
+componentType: state.azure.tablestorage
+version: v1
 metadata:
-  name: statestore
-  namespace: default
-spec:
-  type: state.azure.tablestorage
-  version: v1
-  metadata:
-  - name: accountName
-    value: "wisdompetmed"
-  - name: accountKey
-    secretKeyRef:
-      name: azurestorage
-      key: azurestorage
-  - name: tableName
-    value: "state"
-auth:
-  secretStore: wisdomsecretstore
+- name: accountName
+  value: "wisdompetmed"
+- name: tableName
+  value: "state"
+- name: accountKey
+  secretRef: sa-root-connectionstring
+secrets:
+- name: sa-root-connectionstring
+  value: <YOUR ACCOUNT KEY>

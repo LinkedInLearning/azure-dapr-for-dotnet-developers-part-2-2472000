@@ -1,15 +1,8 @@
-apiVersion: dapr.io/v1alpha1
-kind: Component
+componentType: pubsub.azure.servicebus
+version: v1
 metadata:
-  name: pubsub
-  namespace: default
-spec:
-  type: pubsub.azure.servicebus
-  version: v1
-  metadata:
-  - name: connectionString
-    secretKeyRef:
-      name: azureservicebus
-      key: azureservicebus
-auth:
-  secretStore: wisdomsecretstore
+- name: connectionString
+  secretRef: sb-root-connectionstring
+secrets:
+- name: sb-root-connectionstring
+  value: <YOUR CONNECTION STRING>

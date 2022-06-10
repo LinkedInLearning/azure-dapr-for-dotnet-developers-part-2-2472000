@@ -1,12 +1,4 @@
-using Dapr.Client;
-using Dapr.Extensions.Configuration;
-
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.ConfigureAppConfiguration(config =>
-{
-    var daprClient = new DaprClientBuilder().Build();
-    config.AddDaprSecretStore("wisdomsecretstore", daprClient);
-});
 
 // Add services to the container.
 

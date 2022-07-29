@@ -1,7 +1,10 @@
 # Azure Dapr for .NET Developers Part 2
 This is the repository for the LinkedIn Learning course Azure Dapr for .NET Developers Part 2. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
+![Azure Dapr for .NET Developers Part 2][lil-thumbnail-url] 
+
+Are you ready to take your new skills in Dapr to the next level for successful deployment? In this course, the second in a two-part series, instructor Rodrigo Díaz Concha shows you how to manage, configure, and deploy distributed applications as microservices in Kubernetes and Azure Container Apps. Explore some of the most important building blocks of a resilient, Dapr-engineered solution, including best practices for secrets management, configuration, and end-to-end observability. Learn how to extend and apply Dapr components to be deployed as fully containerized, testable microservices in a Kubernetes cluster or in Azure Container Apps. Along the way, Rodrigo shares key advice to help you get the most out of your Dapr experience.
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
@@ -20,15 +23,14 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
 
+### Instructor
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+Rodrigo Díaz Concha 
+                            
+                            
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/rodrigo-diaz-concha).
 
+[lil-course-url]: https://www.linkedin.com/learning/azure-dapr-for-dot-net-developers-part-2
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2472000/2472000-1658941731588-16x9.jpg
